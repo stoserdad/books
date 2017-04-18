@@ -26,7 +26,7 @@ def bookFileExtractToFile(file):
     if zipfile.is_zipfile('/home/bender/data/' + result['archive_name']):
         zf = zipfile.ZipFile('/home/bender/data/' + result['archive_name'])
         data = zf.read(result['file'] + '.' + result['ext'])
-        fileToWrite = open('/tmp/' + name)
+        fileToWrite = open('/tmp/' + name, 'w')
         fileToWrite.write(data)
         fileToWrite.close()
     return name, '/tmp/' + name
