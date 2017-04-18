@@ -56,7 +56,7 @@ class DownloadHandler(tornado.web.RequestHandler):
             bookData.close()
             os.remove('/tmp/' + name)
             os.remove('/tmp/' + name.replace('fb2', 'epub'))
-            self.redirect('/content/' + name)
+            self.redirect('/content/' + name.replace('fb2', 'epub'))
 
 
 class ContentHandler(tornado.web.RequestHandler):

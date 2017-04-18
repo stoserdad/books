@@ -35,7 +35,9 @@
                              '<td>' + i + '</td>' +
                              '<td>' + item.author + '</td>' +
                              '<td>' + item.title + '</td>' +
-                             '<td align="center"><a href="/download/' + item.filename + '" download><i class="fa fa-download" aria-hidden="true"></i></a></td></tr>';
+                             '<td align="center">' +
+                             '<a href="/download/fb2/' + item.filename + '" download>fb2</a> &nbsp' +
+                             '<a href="/download/epub/' + item.filename + '" download>epub</a></td></tr>';
                  });
                  table += '</table>';
                  document.getElementById('result').innerHTML=table;
@@ -118,7 +120,9 @@ function skipA(obj) {
                              '<td>' + i + '</td>' +
                              '<td>' + item.author + '</td>' +
                              '<td>' + item.title + '</td>' +
-                             '<td align="center"><a href="/download/' + item.filename + '" download><i class="fa fa-download" aria-hidden="true"></i></a></td></tr>';
+                             '<td align="center">' +
+                             '<a href="/download/fb2/' + item.filename + '" download>fb2</a> &nbsp' +
+                             '<a href="/download/epub/' + item.filename + '" download>epub</a></td></tr>';
                  });
                  table += '</table>';
                  document.getElementById('result').innerHTML=table;
@@ -148,7 +152,9 @@ function skipB(obj) {
                              '<td>' + i + '</td>' +
                              '<td>' + item.author + '</td>' +
                              '<td>' + item.title + '</td>' +
-                             '<td align="center"><a href="/download/' + item.filename + '" download><i class="fa fa-download" aria-hidden="true"></i></a></td></tr>';
+                             '<td align="center">' +
+                             '<a href="/download/fb2/' + item.filename + '" download>fb2</a> &nbsp' +
+                             '<a href="/download/epub/' + item.filename + '" download>epub</a></td></tr>';
                  });
                  table += '</table>';
                  document.getElementById('result').innerHTML=table;
@@ -189,7 +195,9 @@ function skip10a(obj) {
                              '<td>' + i + '</td>' +
                              '<td>' + item.author + '</td>' +
                              '<td>' + item.title + '</td>' +
-                             '<td align="center"><a href="/download/' + item.filename + '" download><i class="fa fa-download" aria-hidden="true"></i></a></td></tr>';
+                             '<td align="center">' +
+                             '<a href="/download/fb2/' + item.filename + '" download>fb2</a> &nbsp' +
+                             '<a href="/download/epub/' + item.filename + '" download>epub</a></td></tr>';
                  });
                  table += '</table>';
                  document.getElementById('result').innerHTML=table;
@@ -233,7 +241,9 @@ function skip10b(obj) {
                              '<td>' + i + '</td>' +
                              '<td>' + item.author + '</td>' +
                              '<td>' + item.title + '</td>' +
-                             '<td align="center"><a href="/download/' + item.filename + '" download><i class="fa fa-download" aria-hidden="true"></i></a></td></tr>';
+                             '<td align="center">' +
+                             '<a href="/download/fb2/' + item.filename + '" download>fb2</a> &nbsp' +
+                             '<a href="/download/epub/' + item.filename + '" download>epub</a></td></tr>';
                  });
                  table += '</table>';
                  document.getElementById('result').innerHTML=table;
