@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>books</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/script.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+
+
+</head>
+<body>
+<div>
+    <p></p>
+    <fieldset>
+        <div class="pure-g-r">
+            <div class="pure-u-4-24"></div>
+            <div class="pure-u-1-3">
+                <form class="pure-form">
+                    <input type="text" placeholder="Автор" id="author">
+                    <button type="submit" class="pure-button pure-button-primary" id="sauthor">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="pure-u-1-3">
+                <form class="pure-form">
+                    <input type="text" placeholder="Книга" id="book">
+                    <button type="submit" class="pure-button pure-button-primary" id="sbook">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<p></p>
+<div>
+    <div class="pure-g-r">
+         <div class="pure-u-1-5"></div>
+        <div id="result" class="pure-u-1-2"></div>
+    </div>
+</div>
+</body>
+</html>
