@@ -4,6 +4,8 @@ import tornado.web
 import tornado.options
 import logging
 import os, json, sys
+import subprocess
+
 
 from fileExtractor import bookSearchByAuthor, bookSearchByTitle, bookFileExtract
 
@@ -35,11 +37,26 @@ class BookHandler(tornado.web.RequestHandler):
 
 class DownloadHandler(tornado.web.RequestHandler):
     def get(self, fileID):
-        self.add_header('Cache-Control', 'no-cache')
-        name, data = bookFileExtract(fileID)
-        if savedFileOnMemory: savedFileOnMemory.pop()
-        savedFileOnMemory.append(data)
-        self.redirect('/content/' + name)
+        if 'fb2' == self.request.uri.split('/')[2]:
+            self.add_header('Cache-Control', 'no-cache')
+            name, bookData = bookFileExtract(fileID)
+            if savedFileOnMemory: savedFileOnMemory.pop()
+            savedFileOnMemory.append(bookData)
+            self.redirect('/content/' + name)
+        elif 'epub' == self.request.uri.split('/')[2]:
+            self.add_header('Cache-Control', 'no-cache')
+            name, bookData = bookFileExtract(fileID)
+            fileSaveTmp = open('/tmp/' + name, 'wb')
+            fileSaveTmp.write(bookData)
+            fileSaveTmp.close()
+            subprocess.call(['java', '-jar', 'fb2epub-0.3.0.jar', '/tmp/' + name, '/tmp/' + name.replace('fb2', 'epub')])
+            bookData = open('/tmp/' + name.replace('fb2', 'epub'))
+            if savedFileOnMemory: savedFileOnMemory.pop()
+            savedFileOnMemory.append(bookData)
+            bookData.close()
+            os.remove('/tmp/' + name)
+            os.remove('/tmp/' + name.replace('fb2', 'epub'))
+            self.redirect('/content/' + name)
 
 
 class ContentHandler(tornado.web.RequestHandler):
@@ -55,7 +72,7 @@ class Application(tornado.web.Application):
             (r'/', MainHandler),
             (r'/author', AuthorHandler),
             (r'/book', BookHandler),
-            (r'/download/(\d+)', DownloadHandler),
+            (r'/download/\w+/(\d+)', DownloadHandler),
             (r'/content/(.*)', ContentHandler)]
 
         settings = dict(

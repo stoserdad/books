@@ -20,18 +20,6 @@ def bookFileExtract(file):
     return name, data
 
 
-def bookFileExtractToFile(file):
-    result = collection.find_one({'file': file}, {'_id': 0})
-    name = result['author'].replace(':', '').replace(',', '_') + '-' + result['title'].replace(' ', '_') + '.' + result['ext']
-    if zipfile.is_zipfile('/home/bender/data/' + result['archive_name']):
-        zf = zipfile.ZipFile('/home/bender/data/' + result['archive_name'])
-        data = zf.read(result['file'] + '.' + result['ext'])
-        fileToWrite = open('/tmp/' + name, 'w')
-        fileToWrite.write(data)
-        fileToWrite.close()
-    return name, '/tmp/' + name
-
-
 def bookSearchByAuthor(authorName, skipRow, limitRow=10):
     rawAuthorName = authorName
     if authorName.strip():
