@@ -50,7 +50,7 @@ class DownloadHandler(tornado.web.RequestHandler):
             fileSaveTmp.write(bookData)
             fileSaveTmp.close()
             subprocess.call(['java', '-jar', 'fb2epub-0.3.0.jar', '/tmp/' + name, '/tmp/' + name.replace('fb2', 'epub')])
-            bookData = open('/tmp/' + name.replace('fb2', 'epub'))
+            bookData = open('/tmp/' + name.replace('fb2', 'epub'), 'b')
             if savedFileOnMemory: savedFileOnMemory.pop()
             savedFileOnMemory.append(bookData)
             bookData.close()
